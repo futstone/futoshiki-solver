@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Futoshiki solver</title>
+        <link rel="stylesheet" type="text/css" href="style.css"/>
+        <script type='text/javascript' src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+<!--         <script type='text/javascript' src="jquery-3.1.0.min.js"></script> -->
+        <script src="code.js" defer></script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body onload="init();">
+      <div>
+        <div class="wrapper">
+          <h1>Futoshiki solver.</h1>
+          <table>
+            <tr>
+              <td><input id="1" type="text"></td>
+              <td><div id="1" class="arrowA"</div></td>
+              <td><input id="2" type="text"></td>
+              <td><div  id="2"class="arrowA"</div></td>
+              <td><input id="3" type="text"></td>
+              <td><div id="3" class="arrowA"</div></td>
+              <td><input id="4" type="text"></td>
+              <td><div id="4" class="arrowA"</div></td>
+              <td><input id="5" type="text"></td>
+            </tr>
+            <tr>
+              <td><div id="1" class="arrowB"</div></td>
+              <td></td>
+              <td><div id="2" class="arrowB"</div></td>
+              <td></td>
+              <td><div id="3" class="arrowB"</div></td>
+              <td></td>
+              <td><div id="4" class="arrowB"</div></td>
+              <td></td>
+              <td><div id="5" class="arrowB"</div></td>
+            </tr>
+            <tr>
+              <td><input id="6" type="text"></td>
+              <td><div id="5" class="arrowA"</div></td>
+              <td><input id="7" type="text"></td>
+              <td><div id="6" class="arrowA"</div></td>
+              <td><input id="8" type="text"></td>
+              <td><div id="7" class="arrowA"</div></td>
+              <td><input id="9" type="text"></td>
+              <td><div id="8" class="arrowA"</div></td>
+              <td><input id="10" type="text"></td>
+            </tr>
+            <tr>
+              <td><div id="6" class="arrowB"</div></td>
+              <td></td>
+              <td><div id="7" class="arrowB"</div></td>
+              <td></td>
+              <td><div id="8" class="arrowB"</div></td>
+              <td></td>
+              <td><div id="9" class="arrowB"</div></td>
+              <td></td>
+              <td><div id="10" class="arrowB"</div></td>
+            </tr>
+            <tr>
+              <td><input id="11" type="text"></td>
+              <td><div id="9" class="arrowA"</div></td>
+              <td><input id="12" type="text"></td>
+              <td><div id="10" class="arrowA"</div></td>
+              <td><input id="13" type="text"></td>
+              <td><div id="11" class="arrowA"</div></td>
+              <td><input id="14"type="text"></td>
+              <td><div id="12" class="arrowA"</div></td>
+              <td><input id="15" type="text"></td>
+            </tr>
+            <tr>
+              <td><div id="11" class="arrowB"</div></td>
+              <td></td>
+              <td><div id="12" class="arrowB"</div></td>
+              <td></td>
+              <td><div id="13" class="arrowB"</div></td>
+              <td></td>
+              <td><div id="14" class="arrowB"</div></td>
+              <td></td>
+              <td><div id="15" class="arrowB"</div></td>
+            </tr>
+            <tr>
+              <td><input id="16" type="text"></td>
+              <td><div id="13" class="arrowA"</div></td>
+              <td><input id="17" type="text"></td>
+              <td><div id="14" class="arrowA"</div></td>
+              <td><input id="18" type="text"></td>
+              <td><div id="15" class="arrowA"</div></td>
+              <td><input id="19" type="text"></td>
+              <td><div id="16" class="arrowA"</div></td>
+              <td><input id="20" type="text"></td>
+            </tr>
+            <tr>
+              <td><div id="16" class="arrowB"</div></td>
+              <td></td>
+              <td><div id="17" class="arrowB"</div></td>
+              <td></td>
+              <td><div id="18" class="arrowB"</div></td>
+              <td></td>
+              <td><div id="19" class="arrowB"</div></td>
+              <td></td>
+              <td><div id="20" class="arrowB"</div></td>
+            </tr>
+            <tr>
+              <td><input id="21" type="text"></td>
+              <td><div id="17" class="arrowA"</div></td>
+              <td><input id="22" type="text"></td>
+              <td><div id="18" class="arrowA"</div></td>
+              <td><input id="23" type="text"></td>
+              <td><div id="19" class="arrowA"</div></td>
+              <td><input id="24" type="text"></td>
+              <td><div id="20" class="arrowA"</div></td>
+              <td><input id="25" type="text"></td>
+            </tr>
+          </table>
+        </div>
+        <button id="solve" class="myButton2">SOLVE</button>
+        <button id="clear" class="myButton3">CLEAR</button>
+        <button id="btnGuide" class="myButton4">GUIDE</button>
+      </div>
+      <div id="modal-guide" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+          <div class="modal-header">
+            <span class="close">×</span>
+            <h2>Guide</h2>
+          </div>
+          <div class="modal-body">
+            <h3>Set-up the rules:</h3>
+            <p>1. Click between the cells to adjust the inequality rules.</p>
+            <p>2. Enter pre-defined values into the cells, if any.</p>
+            <p>3. Click "solve".</p>
+          </div>
+        </div>
+      </div>
+      <div id="modal-error" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+          <div class="modal-header-error">
+            <span class="close">×</span>
+            <h2>Error</h2>
+          </div>
+          <div class="modal-body-error">
+            <h3>Not possible with given setup:</h3>
+            <p>Adjust the rules and try again!</p>
+          </div>
+        </div>
+      </div>
+    </body>
+</html>
