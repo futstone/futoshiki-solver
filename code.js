@@ -23,7 +23,7 @@ function run(index) {
 			var took = possibleValues.shift();
 			allSlots[index].currentValue = took;
 			if (allSlots[index].greaterThan.length > 0) {
-				for (var i = 0; i < allSlots[index].greaterThan.length; i++) {
+				for (let i = 0; i < allSlots[index].greaterThan.length; i++) {
 					var idOfGreaterThan = allSlots[index].greaterThan[i];
 					let currentVal = allSlots[idOfGreaterThan].currentValue;
 					if (currentVal !== 0 && currentVal > allSlots[index].currentValue) {
@@ -52,7 +52,7 @@ function getPossibleValues(id) {
 	var valuesReserved = [];
 	setToZero(id);
 
-	for (var i = 0; i < 25; i++) {
+	for (let i = 0; i < 25; i++) {
 		if (allSlots[i].row == allSlots[id].row || allSlots[i].col == allSlots[id].col) {
 			if (allSlots[i].currentValue !== 0) {
 				valuesReserved.push(allSlots[i].currentValue);
@@ -82,7 +82,7 @@ function getPossibleValues(id) {
 }
 
 function setToZero(index) {
-	for (var i = index; i < allSlots.length; i++) {
+	for (let i = index; i < allSlots.length; i++) {
 		if (allSlots[i].isMutable === true) {
 			allSlots[i].currentValue = 0;
 		}
@@ -109,7 +109,7 @@ function Arrow(id) {
 function createAllSlots() {
 	var row = 1;
 	var col = 1;
-	for (var i = 0; i < 25; i++) {
+	for (let i = 0; i < 25; i++) {
 		var newSlot = new Slot();
 		newSlot.row = row;
 		newSlot.col = col;
@@ -137,7 +137,7 @@ function initAllSlots() {
 }
 
 function createAllArrows() {
-	for (var i = 1; i < 21; i++) {
+	for (let i = 1; i < 21; i++) {
 		allArrowA.push(new Arrow(i));
 		allArrowB.push(new Arrow(i));
 	}
@@ -146,7 +146,7 @@ function createAllArrows() {
 function initAllArrows() {
 	var counter = 0;
 	var offset = 0;
-	for (var i = 0; i < 20; i++) {
+	for (let i = 0; i < 20; i++) {
 		allArrowA[i].slot1_ID = i + offset;
 		allArrowA[i].slot2_ID = i + 1 + offset;
 		counter++;
@@ -156,9 +156,9 @@ function initAllArrows() {
 		}
 	}
 
-	for (var j = 0; j < 20; j++) {
-		allArrowB[j].slot1_ID = j;
-		allArrowB[j].slot2_ID = j + 5;
+	for (let i = 0; i < 20; i++) {
+		allArrowB[i].slot1_ID = i;
+		allArrowB[i].slot2_ID = i + 5;
 	}
 }
 
@@ -168,7 +168,7 @@ function init() {
 	initAllArrows();
 	var arrows = document.querySelectorAll(".arrowA, .arrowB");
 
-	for (var i = 0; i < arrows.length; i++) {
+	for (let i = 0; i < arrows.length; i++) {
 		$(arrows[i]).fadeTo("slow", 0.05);
 	}
 }
@@ -213,28 +213,28 @@ $('#clear').on('click', function() {
 	var arrows = document.querySelectorAll(".arrowA, .arrowB");
 	var slots = document.querySelectorAll("input");
 
-	for (var j = 0; j < arrows.length; j++) {
-		$(arrows[j]).fadeTo("fast", 1);
+	for (let i = 0; i < arrows.length; i++) {
+		$(arrows[i]).fadeTo("fast", 1);
 	}
-	for (var i = 0; i < arrows.length; i++) {
+	for (let i = 0; i < arrows.length; i++) {
 		if ($(arrows[i]).hasClass('rotate')) {
 			$(arrows[i]).removeClass('rotate');
 		}
 		$(arrows[i]).fadeTo("fast", 0.05);
 	}
-	for (var n = 0; n < arrows.length / 2; n++) {
-		allArrowA[n].state = 0;
-		allArrowB[n].state = 0;
+	for (let i = 0; i < arrows.length / 2; i++) {
+		allArrowA[i].state = 0;
+		allArrowB[i].state = 0;
 	}
 
-	for (var m = 0; m < allSlots.length; m++) {
-		allSlots[m].greaterThan = [];
-		allSlots[m].smallerThan = [];
-		allSlots[m].currentValue = 0;
+	for (let i = 0; i < allSlots.length; i++) {
+		allSlots[i].greaterThan = [];
+		allSlots[i].smallerThan = [];
+		allSlots[i].currentValue = 0;
 	}
 
-	for (var a = 0; a < slots.length; a++) {
-		$(slots[a]).val('');
+	for (let i = 0; i < slots.length; i++) {
+		$(slots[i]).val('');
 	}
 });
 
