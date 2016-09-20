@@ -1,6 +1,7 @@
 var allSlots = [];
 var allArrowA = [];
 var allArrowB = [];
+var modal;
 
 function run(index) {
 	while (true) {
@@ -20,8 +21,7 @@ function run(index) {
 	outer:
 		while (possibleValues.length > 0) {
 			setToZero(index);
-			var took = possibleValues.shift();
-			allSlots[index].currentValue = took;
+			allSlots[index].currentValue = possibleValues.shift();
 			if (allSlots[index].greaterThan.length > 0) {
 				for (let i = 0; i < allSlots[index].greaterThan.length; i++) {
 					var idOfGreaterThan = allSlots[index].greaterThan[i];
@@ -60,11 +60,11 @@ function getPossibleValues(id) {
 		}
 	}
 
-	for (var j = 1; j < 6; j++) {
-		if (valuesReserved.indexOf(j) > -1) {
+	for (let i = 1; i < 6; i++) {
+		if (valuesReserved.indexOf(i) > -1) {
 			continue;
 		} else {
-			possibleValues.push(j);
+			possibleValues.push(i);
 		}
 	}
 	//remove 100% impossible values 5 and 1 if rules set:
@@ -134,6 +134,20 @@ function initAllSlots() {
 			allSlots[i].isMutable = true;
 		}
 	}
+}
+
+function validateCells() {
+  var cells = document.getElementsByTagName('input');
+  for (let i = 0; i < 25; i++) {
+    if ($(cells[i]).val()) {
+      let val = $(cells[i]).val();
+      let regex = /^[1-5]$/;
+      if (isNaN(parseInt(val)) || !regex.test(val)) {
+        return 0;
+      }
+    }
+  }
+  return 1;
 }
 
 function createAllArrows() {
@@ -239,20 +253,21 @@ $('#clear').on('click', function() {
 });
 
 $('#solve').on('click', function() {
+  if (validateCells() === 0) {
+    displayErrorModal(2);
+    return;
+  }
 	initAllSlots();
 	var result = run(0);
 	if (result == 1) {
-		for (var i = 1; i < 26; i++) {
+		for (let i = 1; i < 26; i++) {
 			var slot = $('input#' + i);
 			slot.val(allSlots[i - 1].currentValue);
 		}
 	} else {
-		modal = document.getElementById('modal-error');
-		modal.style.display = "block";
+		displayErrorModal(1);
 	}
 });
-
-var modal = document.getElementById('modal-guide');
 
 $('#btnGuide').on('click', function() {
 	modal = document.getElementById('modal-guide');
@@ -267,4 +282,17 @@ window.onclick = function(event) {
 	if (event.target == modal) {
 		modal.style.display = "none";
 	}
+}
+
+function displayErrorModal(errorType) {
+	let errorMessage;
+  if (errorType == 1) {
+		errorMessage = "<p>Not possible with the current setup, adjust the rules and try again</p>";
+	} else if (errorType == 2) {
+    errorMessage = "<p>Use only numbers 1-5</p>"
+  }
+  $(".modal-body-error").empty();
+  $(".modal-body-error").append(errorMessage);
+  modal = document.getElementById('modal-error');
+	modal.style.display = "block";
 }
