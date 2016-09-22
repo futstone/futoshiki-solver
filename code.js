@@ -2,6 +2,7 @@ var allSlots = [];
 var allArrowA = [];
 var allArrowB = [];
 var modal;
+var fadeout = 0.15;
 
 function run(index) {
 	while (true) {
@@ -183,7 +184,7 @@ function init() {
 	var arrows = document.querySelectorAll(".arrowA, .arrowB");
 
 	for (let i = 0; i < arrows.length; i++) {
-		$(arrows[i]).fadeTo("slow", 0.05);
+		$(arrows[i]).fadeTo("slow", fadeout);
 	}
 }
 
@@ -218,7 +219,7 @@ $('.arrowA, .arrowB').on('click', function() {
 		selectedArrows[id].state = 0;
 		slot1.smallerThan.splice(slot1.smallerThan.indexOf(id2), 1);
 		slot2.greaterThan.splice(slot2.greaterThan.indexOf(id1), 1);
-		$(this).fadeTo("fast", 0.05);
+		$(this).fadeTo("fast", fadeout);
 		$(this).toggleClass('rotate');
 	}
 });
@@ -234,7 +235,7 @@ $('#clear').on('click', function() {
 		if ($(arrows[i]).hasClass('rotate')) {
 			$(arrows[i]).removeClass('rotate');
 		}
-		$(arrows[i]).fadeTo("fast", 0.05);
+		$(arrows[i]).fadeTo("fast", fadeout);
 	}
 	for (let i = 0; i < arrows.length / 2; i++) {
 		allArrowA[i].state = 0;

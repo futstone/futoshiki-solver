@@ -3,13 +3,21 @@ body {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	background-color: #636363;
-	font-family: 'Inconsolata', monospace;
+	/*//background-color: #636363;*/
+	/*font-family: 'Inconsolata', monospace;*/
+	font-family: 'Philosopher', sans-serif;
+	background: rgb(145,255,223); /* Old browsers */
+	background: -moz-linear-gradient(left,  rgba(145,255,223,1) 0%, rgba(107,220,255,1) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(left,  rgba(145,255,223,1) 0%,rgba(107,220,255,1) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to right,  rgba(145,255,223,1) 0%,rgba(107,220,255,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#91ffdf', endColorstr='#6bdcff',GradientType=1 ); /* IE6-9 */
 }
 
 h1 {
-	color: #e1d9ce;
+	color: white;
 	text-align: center;
+	font-size: 40px;
+	font-weight: 100;
 }
 
 table {
@@ -31,30 +39,38 @@ input {
 	font-family: inherit;
 	text-align: center;
 	font-size: 35px;
-	color: #f3d59e;
-	border-width: 2px;
+	color: white;
+	border-width: 1px;
 	border-style: solid;
-	border-color: #e1d9ce;
-	background-color: #636363;
+	border-color: white;
+	background-color: rgba(0,0,0,0);
 	width: 50px;
 	height: 50px;
 }
 
+input:focus {
+	outline: 0;
+	-webkit-box-shadow: 0px;
+}
+
 .wrapper {
-	border-width: 2px;
+	border-width: 1px;
 	border-style: solid;
-	border-color: #e1d9ce;
+	border-color: white;
+	-webkit-box-shadow: 0px 0px 50px 5px rgba(255,255,255,0.53);
+	-moz-box-shadow: 0px 0px 50px 5px rgba(255,255,255,0.53);
+	box-shadow: 0px 0px 50px 5px rgba(255,255,255,0.53);
 	padding-bottom: 15px;
 	padding-left: 30px;
 	padding-right: 30px;
-	background-color: rgb(84, 84, 84);
+	background-color: rgba(84, 84, 84, 0.2);
 }
 
 .arrowA {
 	width: 25px;
 	height: 25px;
-	border-right: 0.15em solid #f3d59e;
-	border-top: 0.15em solid #f3d59e;
+	border-right: 1px solid white;
+	border-top: 1px solid white;
 	transform: rotate(45deg);
 	display: block;
 	margin-left: auto;
@@ -78,8 +94,8 @@ input {
 .arrowB {
 	width: 25px;
 	height: 25px;
-	border-right: 0.15em solid #f3d59e;
-	border-top: 0.15em solid #f3d59e;
+	border-right: 1px solid white;
+	border-top: 1px solid white;
 	/*transform: rotate(-45deg);*/
 	transform: rotate(135deg);
 	display: block;
@@ -142,16 +158,18 @@ input {
 }
 
 .myButton2 {
-	background-color: #b8e356;
+	background-color: rgba(84,84,84,0.2);
 	display: inline-block;
 	cursor: pointer;
-	color: #4e5254;
+	color: white;
 	font-family: inherit;
 	font-size: 13px;
 	font-weight: bold;
 	padding: 5px 15px;
 	text-decoration: none;
-	border-width: 0px;
+	border-width: 1px;
+	border-style: solid;
+	border-color: white;
 	margin-top: 10px;
 }
 
@@ -171,16 +189,18 @@ input {
 
 .myButton3 {
 	/*background-color:#ffc477;*/
-	background-color: #ffc477;
+	background-color: rgba(84,84,84,0.2);
 	display: inline-block;
 	cursor: pointer;
-	color: #4e5254;
+	color: white;
 	font-family: inherit;
 	font-size: 13px;
 	font-weight: bold;
 	padding: 5px 15px;
 	text-decoration: none;
-	border-width: 0px;
+	border-width: 1px;
+	border-style: solid;
+	border-color: white;
 	margin-top: 10px;
 }
 
@@ -200,16 +220,18 @@ input {
 
 .myButton4 {
 	/*background-color:#ffc477;*/
-	background-color: #77beff;
+	background-color: rgba(84,84,84,0.2);
 	display: inline-block;
 	cursor: pointer;
-	color: #4e5254;
+	color: white;
 	font-family: inherit;
 	font-size: 13px;
 	font-weight: bold;
 	padding: 5px 15px;
 	text-decoration: none;
-	border-width: 0px;
+	border-width: 1px;
+	border-style: solid;
+	border-color: white;
 	margin-top: 10px;
 }
 
